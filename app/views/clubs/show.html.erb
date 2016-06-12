@@ -1,0 +1,20 @@
+<% if @club %>
+
+  <h1><%= @club.name %></h1>
+
+  <p><b>Nickname: </b> <i><%= @club.nickname %></i></p>
+  <p><b>Manager: </b> <i><%= @club.manager %></i></p>
+  <p><b>Premier League Rank: </b> <i><%= @club.rank %></i></p>
+  <p><b>Location: </b> <i><%= @club.location.try(:name) %></i></p>
+  
+<% else %>
+
+  <h1> Club not found </h1>
+
+<% end %>
+
+<%= link_to 'edit', edit_club_path(@club) %> 
+<br>
+<%= link_to 'delete', club_path(@club), method: :delete, data: {confirm: "Are you sure you want to delete this club?"} %> 
+
+<h4 style="bottom: 0px; position: fixed;">  <%= link_to 'Home', clubs_path %></h4>
