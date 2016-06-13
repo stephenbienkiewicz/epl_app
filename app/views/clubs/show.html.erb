@@ -6,6 +6,13 @@
   <p><b>Manager: </b> <i><%= @club.manager %></i></p>
   <p><b>Premier League Rank: </b> <i><%= @club.rank %></i></p>
   <p><b>Location: </b> <i><%= @club.location.try(:name) %></i></p>
+
+  <p><b>Statuses: </b></p>
+  <ul>
+    <% @club.statuses.each do |status| %>
+    <li><i><%= status.name %></i></li>
+    <% end %>
+  </ul>
   
 <% else %>
 

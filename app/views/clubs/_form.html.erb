@@ -33,6 +33,10 @@
     <%= collection_select(:club, :location_id, Location.all, :id, :name, {include_blank: true}) %>
   </p>
   <p>
+    <b><%= f.label :status %></b> <br>
+    <%= collection_check_boxes(:club, :status_ids, Status.all, :id, :name) %>
+  </p>
+  <p>
   <%= f.submit %>
   </p>
 

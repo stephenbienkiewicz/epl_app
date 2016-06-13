@@ -49,7 +49,7 @@ class ClubsController  < ApplicationController
   private
   
   def club_params
-    params.require(:club).permit(:name, :nickname, :manager, :rank, :location_id)
+    params.require(:club).permit(:name, :nickname, :manager, :rank, :location_id, :status_ids => [])
   end
 
 end
