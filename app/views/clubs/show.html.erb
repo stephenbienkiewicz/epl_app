@@ -20,8 +20,10 @@
 
 <% end %>
 
-<%= link_to 'edit', edit_club_path(@club) %> 
-<br>
-<%= link_to 'delete', club_path(@club), method: :delete, data: {confirm: "Are you sure you want to delete this club?"} %> 
+<% if current_user %>
+  <%= link_to 'edit', edit_club_path(@club) %> 
+  <br>
+  <%= link_to 'delete', club_path(@club), method: :delete, data: {confirm: "Are you sure you want to delete this club?"} %> 
+<% end %>
 
 <h4 style="bottom: 0px; position: fixed;">  <%= link_to 'Home', clubs_path %></h4>

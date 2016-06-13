@@ -1,10 +1,11 @@
 class ClubsController  < ApplicationController 
+  before_action :find_club, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @clubs = Club.all
   end
   
   def show
-    @club = Club.find_by_id(params[:id])
   end
   
   def new
@@ -23,13 +24,10 @@ class ClubsController  < ApplicationController
     end
   end
   
-  def edit 
-    @club = Club.find_by_id(params[:id])  
+  def edit   
   end
   
   def update
-    @club = Club.find_by_id(params[:id])
-
     if @club.update(club_params)
       redirect_to club_path(@club), notice: 'Club was updated successfully'    
     else
@@ -38,9 +36,7 @@ class ClubsController  < ApplicationController
     end
   end
   
-  def destroy 
-    @club = Club.find_by_id(params[:id]) 
-
+  def destroy  
     @club.delete
 
     redirect_to clubs_path
@@ -48,6 +44,10 @@ class ClubsController  < ApplicationController
 
   private
   
+  def find_club
+    @club = Club.find_by_id(params[:id])
+  end
+
   def club_params
     params.require(:club).permit(:name, :nickname, :manager, :rank, :location_id, :status_ids => [])
   end
